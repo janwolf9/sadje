@@ -22,9 +22,9 @@ kakršno je na mizi, preden začne Iva vrivati dodatna jabolka). V tem nizu znak
 hruško, znak 1 pa jabolko.
 
 ## Omejitve vhodnih podatkov
-• 1 ≤ n ≤ 10 000
-• 0 ≤ k ≤ 50
-• 1 ≤ m ≤ 10 000
+- 1 ≤ n ≤ 10 000
+- 0 ≤ k ≤ 50
+- 1 ≤ m ≤ 10 000
 
 ## Izhodni podatki
 V prvo vrstico izpišite število jabolk, ki jih bo Ivo pobral (po tistem, ko bo Iva na maksimalno zloben način vrinila morebitna dodatna jabolka v zaporedje). V drugo vrstico
