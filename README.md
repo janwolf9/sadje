@@ -2,11 +2,11 @@
 
 Na mizi je zaporedje n sadežev, vsak od njih pa je jabolko ali hruška. Iva in Ivo se
 gresta naslednjo igro:
-• Prva je na vrsti Iva, ki vrine v zaporedje na poljubna mesta še največ k jabolk
+- Prva je na vrsti Iva, ki vrine v zaporedje na poljubna mesta še največ k jabolk
 (lahko tudi manj, lahko celo nobenega). Teh dodatnih jabolk ji ni treba vriniti vseh
 skupaj, ampak lahko vsako od njih vrine na poljubno mesto v zaporedju (lahko tudi
 na začetek ali na konec zaporedja).
-• Nato je na vrsti Ivo, ki pobere vsak m-ti sadež v tako nastalem zaporedju.
+- Nato je na vrsti Ivo, ki pobere vsak m-ti sadež v tako nastalem zaporedju.
 Ivo ima rad jabolka. Iva pa je zlobna in bi rada zaporedje spremenila tako, da bo Ivo
 pobral čim manj jabolk.
 
