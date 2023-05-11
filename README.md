@@ -1,4 +1,4 @@
-# sadje
+# Sadje
 
 Na mizi je zaporedje n sadežev, vsak od njih pa je jabolko ali hruška. Iva in Ivo se
 gresta naslednjo igro:
