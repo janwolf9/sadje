@@ -14,7 +14,7 @@ void printPatternUtil(const string str, char buff[], int i, int j, int n, int k)
     }
 
     if (k <= 0) {
-        while (j < n){
+        while (i < n){
             buff[j] = str[i];
             i++;
             j++;
@@ -31,8 +31,7 @@ void printPatternUtil(const string str, char buff[], int i, int j, int n, int k)
     // Or put 1
     buff[j] = '1';
     //buff[j + 1] = str[i];
-    k--;
-    printPatternUtil(str, buff, i + 1, j + 1, n, k);
+    printPatternUtil(str, buff, i, j + 1, n, k-1);
 }
 
 void printPattern(const string str, int n, int &k)
