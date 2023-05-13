@@ -37,7 +37,7 @@ int pickedCount(char buff[], int m){
     return count;
 }
 
-void printPatternUtil(const string str, char buff[], int i, int j, int n, int k, int m, int &min, char solu[])
+void findPatternUtil(const string str, char *buff, int i, int j, int n, int k, int m, int &min, char *solu)
 {
     if (i == n)
     {
@@ -68,24 +68,24 @@ void printPatternUtil(const string str, char buff[], int i, int j, int n, int k,
     }
     // Either put the character
     buff[j] = str[i];
-    printPatternUtil(str, buff, i + 1, j + 1, n, k, m, min, solu);
+    findPatternUtil(str, buff, i + 1, j + 1, n, k, m, min, solu);
 
     // Or put 1
     buff[j] = '1';
     //buff[j + 1] = str[i];
-    printPatternUtil(str, buff, i, j + 1, n, k-1, m, min, solu);
+    findPatternUtil(str, buff, i, j + 1, n, k - 1, m, min, solu);
 }
 
-void printPattern(const string& str, int n, int &k, int m, int &min, char solu[])
+void findPattern(const string& str, int n, int &k, int m, int &min, char *solu)
 {
     char buf[n+k+1];
     char buf1[n+k+1];
 
     buf[0] = str[0];
-    printPatternUtil(str, buf, 1, 1, n, k, m, min, solu); //pustimo 0 na zacetku
+    findPatternUtil(str, buf, 1, 1, n, k, m, min, solu); //pustimo 0 na zacetku
 
     buf1[0] = '1';
-    printPatternUtil(str, buf1, 0, 1, n, k-1, m, min, solu); //vrinemo 1 na zacetek
+    findPatternUtil(str, buf1, 0, 1, n, k - 1, m, min, solu); //vrinemo 1 na zacetek
 }
 
 int main(int argc, char* argv[]) {
@@ -105,6 +105,7 @@ int main(int argc, char* argv[]) {
 
     int n, k, m; // n-jabolk, k-vrinjenih, m-to pobira
     string niz;
+
     file >> n >> k >> m;
     std::getline(file, line);
     file >> niz; // 0 - hruska, 1 - jabolko
@@ -112,17 +113,19 @@ int main(int argc, char* argv[]) {
     vector<int> insertedIndices;
     insertedIndices.reserve(k);
     int min = INT_MAX;
-    char solu[n+k+1];
-    printPattern(niz, n, k, m, min, solu);
+    char solution[n + k + 1];
+    findPattern(niz, n, k, m, min, solution);
 
     cout << min << "\n";
-    findInsertedIndices(niz, solu, insertedIndices);
+    findInsertedIndices(niz, solution, insertedIndices);
     cout << insertedIndices.size();
     for (int &i : insertedIndices){
         cout << " " << i;
     }
     cout << "\n";
+
     file.close();
+
     return 0;
 }
 
