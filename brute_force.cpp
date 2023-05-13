@@ -1,15 +1,23 @@
 #include <iostream>
 #include <fstream>
-#include <string>
+#include <cstring>
 
 using namespace std;
 
-void printPatternUtil(const string str, char buff[], int i, int j, int n, int k)
+int pickedCount(char buff[], int m){
+    int count = 0;
+    for (int i = m-1; i < strlen(buff); i+=m) {
+        if (buff[i] == '1') count++;
+    }
+    return count;
+}
+
+void printPatternUtil(const string str, char buff[], int i, int j, int n, int k, int m)
 {
     if (i == n)
     {
         buff[j] = '\0';
-        cout << buff << endl;
+        cout << buff << " " << pickedCount(buff, m) << "\n";
         return;
     }
 
@@ -20,30 +28,30 @@ void printPatternUtil(const string str, char buff[], int i, int j, int n, int k)
             j++;
         }
         buff[j] = '\0';
-        cout << buff << endl;
+        cout << buff << " " << pickedCount(buff, m) << "\n";
         return;
     }
 
     // Either put the character
     buff[j] = str[i];
-    printPatternUtil(str, buff, i + 1, j + 1, n, k);
+    printPatternUtil(str, buff, i + 1, j + 1, n, k, m);
 
     // Or put 1
     buff[j] = '1';
     //buff[j + 1] = str[i];
-    printPatternUtil(str, buff, i, j + 1, n, k-1);
+    printPatternUtil(str, buff, i, j + 1, n, k-1, m);
 }
 
-void printPattern(const string str, int n, int &k)
+void printPattern(const string str, int n, int &k, int m)
 {
     char buf[2 * n];
     char buf1[2 * n];
 
     buf[0] = str[0];
-    printPatternUtil(str, buf, 1, 1, n, k); //pustimo 0 na zacetku
+    printPatternUtil(str, buf, 1, 1, n, k, m); //pustimo 0 na zacetku
 
     buf1[0] = '1';
-    printPatternUtil(str, buf1, 0, 1, n, k-1); //vrinemo 1 na zacetek
+    printPatternUtil(str, buf1, 0, 1, n, k-1, m); //vrinemo 1 na zacetek
 }
 
 int main(int argc, char* argv[]) {
@@ -66,7 +74,7 @@ int main(int argc, char* argv[]) {
     file >> n >> k >> m;
     std::getline(file, line);
     file >> niz; // 0 - hruska, 1 - jabolko
-    printPattern(niz, n,k);
+    printPattern(niz, n, k, m);
     return 0;
 }
 
