@@ -11,7 +11,8 @@ int main(int argc, char **argv) {
     dp[0][0] = 0;
 
     int n, k, m;
-    int c, r;
+    int c;
+    int bestDp = 0;
     int input[maxN];
     int indices[maxK];
 
@@ -75,32 +76,29 @@ int main(int argc, char **argv) {
         }
     }
 
-    r = 0;
     for (int j = 1; j <= k; j++) {
-        if (dp[j][n] < dp[r][n]) {
-            r = j;
+        if (dp[j][n] < dp[bestDp][n]) {
+            bestDp = j;
         }
     }
 
-    int j = r;
-    int i = n;
+    int j = bestDp;
+    int resultIndex = n;
     while (j > 0) {
-
-        if (i < 0) {
+        if (resultIndex < 0) {
             return 8;
         }
-
-        if ((i + j) % m == 0) {
-            if (dp[j][i] == dp[j - 1][i] + 1) {
-                indices[--j] = i;
+        if ((resultIndex + j) % m == 0) {
+            if (dp[j][resultIndex] == dp[j - 1][resultIndex] + 1) {
+                indices[--j] = resultIndex;
             } else {
-                --i;
+                --resultIndex;
             }
         } else {
-            if (dp[j][i] == dp[j - 1][i]) {
-                indices[--j] = i;
+            if (dp[j][resultIndex] == dp[j - 1][resultIndex]) {
+                indices[--j] = resultIndex;
             } else {
-                --i;
+                --resultIndex;
             }
         }
     }
@@ -115,10 +113,10 @@ int main(int argc, char **argv) {
         return 21;
     }
 
-    std::cout << dp[r][n] << "\n" << r;
-    myOutputFile << dp[r][n] << "\n" << r;
+    std::cout << dp[bestDp][n] << "\n" << bestDp;
+    myOutputFile << dp[bestDp][n] << "\n" << bestDp;
 
-    for (j = 0; j < r; j++) {
+    for (j = 0; j < bestDp; j++) {
         myOutputFile << " " << indices[j] + j + 1;
         std::cout << " " << indices[j] + j + 1;
     }
